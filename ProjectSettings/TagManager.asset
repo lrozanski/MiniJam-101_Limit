@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Track
+  - Cars
+  - Towers
+  - Projectiles
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Cars
+    uniqueID: 616595
+    locked: 0
+  - name: Towers
+    uniqueID: 1398676043
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1837951839
+    locked: 0
+  - name: UI
+    uniqueID: 1430546231
     locked: 0
