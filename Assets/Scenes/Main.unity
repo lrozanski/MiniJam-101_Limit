@@ -179,9 +179,9 @@ GameObject:
   m_Component:
   - component: {fileID: 62306839}
   - component: {fileID: 62306840}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Finish Line
-  m_TagString: Untagged
+  m_TagString: Finish Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,6 +421,11 @@ Transform:
   m_Father: {fileID: 1142841038}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &909357265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7045209048674946518, guid: 957258a7c39db5c40be65c536befa209, type: 3}
+  m_PrefabInstance: {fileID: 1472436100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &913142323
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,11 +3504,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPositions:
-  - {x: -2.5, y: -2.5}
-  - {x: -2.5, y: -3.5}
+  - {x: -2.5, y: -1.5}
+  - {x: -2.5, y: -2.25}
+  - {x: -2.5, y: -3}
+  - {x: -1.5, y: -1.75}
+  - {x: -1.5, y: -2.5}
+  - {x: -1.5, y: -3.25}
   enemyPrefab: {fileID: 377193211734300489, guid: 957258a7c39db5c40be65c536befa209, type: 3}
-  maxGenerations: 100
-  timeScale: 5
+  maxGenerations: 1000
+  timeScale: 50
 --- !u!1 &1368708994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3556,6 +3565,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 930501010}
     m_Modifications:
+    - target: {fileID: 377193211734300489, guid: 957258a7c39db5c40be65c536befa209, type: 3}
+      propertyPath: power
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 377193211734300489, guid: 957258a7c39db5c40be65c536befa209, type: 3}
+      propertyPath: frontDetector
+      value: 
+      objectReference: {fileID: 909357265}
+    - target: {fileID: 377193211734300489, guid: 957258a7c39db5c40be65c536befa209, type: 3}
+      propertyPath: steeringPower
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 2345760006204063757, guid: 957258a7c39db5c40be65c536befa209, type: 3}
       propertyPath: m_Name
       value: Enemy Car
@@ -3578,7 +3599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2345760006204063759, guid: 957258a7c39db5c40be65c536befa209, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2345760006204063759, guid: 957258a7c39db5c40be65c536befa209, type: 3}
       propertyPath: m_LocalPosition.z

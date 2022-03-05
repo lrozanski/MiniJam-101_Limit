@@ -15,9 +15,14 @@ namespace AI {
             public float accelerateAmount;
 
             [PropertyRange(0f, 1f)]
+            public float decelerateAmount;
+
+            [PropertyRange(0f, 1f)]
             public float turnAmount;
 
-            public override string ToString() => $"{nameof(accelerateAmount)}: {accelerateAmount}, {nameof(turnAmount)}: {turnAmount}";
+            public override string ToString() {
+                return $"{nameof(accelerateAmount)}: {accelerateAmount}, {nameof(decelerateAmount)}: {decelerateAmount}, {nameof(turnAmount)}: {turnAmount}";
+            }
 
         }
 
@@ -36,10 +41,13 @@ namespace AI {
         [SerializeField, ChildGameObjectsOnly]
         private Transform rightWideDetector;
 
+        [SerializeField, ChildGameObjectsOnly]
+        private Transform frontDetector;
+
         [SerializeField]
         private LayerMask trackLayerMask;
 
-        public HashSet<Vector2Int> VisitedTiles { get; } = new();
+        private HashSet<Vector2Int> VisitedTiles { get; } = new();
 
         [ShowInInspector]
         public bool ReachedFinishLine { get; private set; }
@@ -50,7 +58,13 @@ namespace AI {
         [ShowInInspector]
         public float DistanceInTiles => VisitedTiles.Count;
 
+        [ShowInInspector]
+        public int Collisions { get; private set; }
+
         private void Update() {
+            if (ReachedFinishLine) {
+                return;
+            }
             TimeElapsed += Time.deltaTime;
         }
 
@@ -66,27 +80,39 @@ namespace AI {
             var rightWallFar = Physics2D.Linecast(position, rightWallFarDetector.position, trackLayerMask);
             var leftWide = Physics2D.Linecast(position, leftWideDetector.position, trackLayerMask);
             var rightWide = Physics2D.Linecast(position, rightWideDetector.position, trackLayerMask);
+            var front = Physics2D.Linecast(position, frontDetector.position, trackLayerMask);
 
             if (leftWallFar && !rightWallFar) {
                 UpdateSteering(Ai.turnAmount);
             } else if (rightWallFar && !leftWallFar) {
                 UpdateSteering(-Ai.turnAmount);
             } else if (leftWide) {
-                UpdateSteering(Ai.turnAmount);
+                UpdateSteering(Ai.turnAmount * 1.5f);
             } else if (rightWide) {
-                UpdateSteering(-Ai.turnAmount);
+                UpdateSteering(-Ai.turnAmount * 1.5f);
             } else {
                 UpdateSteering(0f);
             }
-            UpdateThrottle(Ai.accelerateAmount);
+            if (front) {
+                UpdateThrottle(Ai.accelerateAmount - Ai.decelerateAmount * Mathf.Lerp(0f, 1f, 1f - front.fraction));
+            } else {
+                UpdateThrottle(Ai.accelerateAmount);
+            }
 
             base.FixedUpdate();
         }
 
         private void OnTriggerEnter2D(Collider2D col) {
+            if (TimeElapsed <= 5f || DistanceInTiles < 5) {
+                return;
+            }
             if (col.CompareTag("Finish Line")) {
                 ReachedFinishLine = true;
             }
+        }
+
+        private void OnCollisionEnter2D(Collision2D col) {
+            Collisions++;
         }
 
     }
