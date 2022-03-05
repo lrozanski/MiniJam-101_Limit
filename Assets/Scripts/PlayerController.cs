@@ -1,6 +1,6 @@
 ﻿public class PlayerController : VehicleController {
 
-    private void Update() {
+    protected void Update() {
         if (!InputManager.Instance.PlayerInput.inputIsActive) {
             return;
         }
