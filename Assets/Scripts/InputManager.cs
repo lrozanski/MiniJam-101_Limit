@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1)]
 public class InputManager : SingletonMonoBehaviour<InputManager> {
 
     public class PlayerInputActions {

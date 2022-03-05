@@ -6,42 +6,6 @@
             "id": "7965e8d4-19c6-4091-907f-d941e6cb6a8d",
             "actions": [
                 {
-                    "name": "Accelerate",
-                    "type": "Button",
-                    "id": "7850dce3-059f-405f-966f-1c19be358b15",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Decelerate",
-                    "type": "Button",
-                    "id": "cd1b191e-64ed-49ed-9776-1be0e68487ea",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Turn Left",
-                    "type": "Button",
-                    "id": "08a00613-fd34-44a5-a6bc-cc88db240972",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Turn Right",
-                    "type": "Button",
-                    "id": "1b5d20ac-1a0f-4c21-b2e6-4563ddbdc1c4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "1877877b-e376-4bd5-bf92-739130b429ab",
@@ -72,99 +36,22 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "7d482693-c19d-48e0-8c78-d54d1735f588",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Accelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7ee04bea-aba1-4018-9409-9389dbebad82",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Accelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "20ad061d-6358-4822-99bb-aa0c0d5fc723",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Decelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae8ba9d3-ccbe-40f2-b851-310cc7f9b50d",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Decelerate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9ebb432e-d95b-47d6-81e5-23901e3f3442",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turn Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0705b7b7-f1be-4d80-a3b6-9dbbe8fe04d7",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turn Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eb5be490-783a-48ca-a042-86a3e203f54b",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turn Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c296d920-e27b-4093-b2f5-beb0e3e82e5f",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Turn Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e89b43e4-e475-4a78-9494-4a188dc19be8",
                     "path": "<Keyboard>/p",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec63cd47-f509-435d-9f7a-c7d3cc5edca0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -32,7 +32,7 @@ public abstract class VehicleController : MonoBehaviour {
 
     private new Rigidbody2D rigidbody2D;
     private TrailRenderer[] skidmarks;
-    
+
     protected void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         skidmarks = GetComponentsInChildren<TrailRenderer>();
@@ -47,8 +47,8 @@ public abstract class VehicleController : MonoBehaviour {
     }
 
     protected virtual void FixedUpdate() {
-        var actualSteeringPower = Mathf.Lerp(0f, steeringPower, Mathf.Clamp01(rigidbody2D.velocity.magnitude / 2f)) * Mathf.Sign(rigidbody2D.velocity.magnitude);
-        rigidbody2D.AddTorque(-steering * actualSteeringPower);
+        var actualSteeringPower = Mathf.Lerp(0f, steeringPower, Mathf.Clamp01(rigidbody2D.velocity.magnitude / 2f));
+        rigidbody2D.AddTorque(-steering * actualSteeringPower * Mathf.Sign(rigidbody2D.velocity.magnitude));
 
         var acceleration = (Vector2) transform.up * (throttle * power);
         rigidbody2D.AddForce(acceleration);
@@ -56,13 +56,11 @@ public abstract class VehicleController : MonoBehaviour {
         var driftForce = new Vector2(transform.InverseTransformVector(rigidbody2D.velocity).x, 0f);
         var frictionForce = Vector2.ClampMagnitude(driftForce * -1 * surfaceFriction, maxTyreFriction);
 
-        // if (rigidbody2D.angularVelocity > 2f) {
         rigidbody2D.AddForce(rigidbody2D.GetRelativeVector(frictionForce), ForceMode2D.Force);
 
-        Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(driftForce), Color.green);
-        Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(frictionForce), Color.red);
-        // }
-        
+        // Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(driftForce), Color.green);
+        // Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(frictionForce), Color.red);
+
         foreach (var trailRenderer in skidmarks) {
             trailRenderer.emitting = driftForce.sqrMagnitude > frictionForce.sqrMagnitude * skidmarkThreshold;
         }
