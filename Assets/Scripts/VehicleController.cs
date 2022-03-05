@@ -1,61 +1,70 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
+/// <summary>
+/// Borrowed heavily from https://github.com/ijidau/TopDown2DCar
+/// </summary>
 public abstract class VehicleController : MonoBehaviour {
 
-    [SerializeField, PropertyRange(0f, 2f)]
-    private float acceleration;
+    [SerializeField, PropertyRange(0f, 20f)]
+    private float power;
 
-    [SerializeField, PropertyRange(0f, 50f)]
-    private float turnSpeed;
+    [SerializeField, PropertyRange(0f, 5f)]
+    private float steeringPower;
 
-    [SerializeField, PropertyRange(0f, 1f)]
-    private float brakingSpeed;
-    
-    private bool accelerating;
-    private bool decelerating;
+    [SerializeField, PropertyRange(0f, 10f)]
+    private float surfaceFriction;
 
-    private new Rigidbody2D rigidbody2D;
+    [SerializeField, PropertyRange(0f, 10f)]
+    private float maxTyreFriction;
+
+    [SerializeField, PropertyRange(0f, 10f)]
+    private float skidmarkThreshold;
+
+    [ShowInInspector, ReadOnly]
+    private float steering;
+
+    [ShowInInspector, ReadOnly]
+    private float throttle;
 
     [ShowInInspector, ReadOnly]
     private Vector2 Velocity => rigidbody2D == null ? Vector2.zero : rigidbody2D.velocity;
 
+    private new Rigidbody2D rigidbody2D;
+    private TrailRenderer[] skidmarks;
+    
     protected void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        skidmarks = GetComponentsInChildren<TrailRenderer>();
     }
 
-    protected void Accelerate() {
-        rigidbody2D.velocity += (Vector2) transform.up * acceleration;
-        accelerating = true;
-        decelerating = false;
+    protected void UpdateThrottle(float amount) {
+        throttle = amount;
     }
 
-    protected void Decelerate() {
-        rigidbody2D.velocity -= (Vector2) transform.up * brakingSpeed;
-        accelerating = false;
-        decelerating = true;
+    protected void UpdateSteering(float amount) {
+        steering = amount;
     }
 
-    protected void TurnLeft() {
-        if (rigidbody2D.velocity.magnitude <= 0.3f) {
-            return;
-        }
-        rigidbody2D.AddTorque(turnSpeed * Time.deltaTime, ForceMode2D.Impulse);
-        // rigidbody2D.MoveRotation(rigidbody2D.rotation + turnSpeed);
-    }
+    protected virtual void FixedUpdate() {
+        var actualSteeringPower = Mathf.Lerp(0f, steeringPower, Mathf.Clamp01(rigidbody2D.velocity.magnitude / 2f)) * Mathf.Sign(rigidbody2D.velocity.magnitude);
+        rigidbody2D.AddTorque(-steering * actualSteeringPower);
 
-    protected void TurnRight() {
-        if (rigidbody2D.velocity.magnitude <= 0.3f) {
-            return;
-        }
-        rigidbody2D.AddTorque(-turnSpeed * Time.deltaTime, ForceMode2D.Impulse);
-        // rigidbody2D.MoveRotation(rigidbody2D.rotation - turnSpeed);
-    }
+        var acceleration = (Vector2) transform.up * (throttle * power);
+        rigidbody2D.AddForce(acceleration);
 
-    protected virtual void Update() {
-        if (!accelerating && !decelerating && rigidbody2D.velocity.magnitude > 0.3f) {
-            rigidbody2D.velocity -= (Vector2) transform.up * brakingSpeed;
+        var driftForce = new Vector2(transform.InverseTransformVector(rigidbody2D.velocity).x, 0f);
+        var frictionForce = Vector2.ClampMagnitude(driftForce * -1 * surfaceFriction, maxTyreFriction);
+
+        // if (rigidbody2D.angularVelocity > 2f) {
+        rigidbody2D.AddForce(rigidbody2D.GetRelativeVector(frictionForce), ForceMode2D.Force);
+
+        Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(driftForce), Color.green);
+        Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(frictionForce), Color.red);
+        // }
+        
+        foreach (var trailRenderer in skidmarks) {
+            trailRenderer.emitting = driftForce.sqrMagnitude > frictionForce.sqrMagnitude * skidmarkThreshold;
         }
     }
 

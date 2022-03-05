@@ -1,4 +1,4 @@
-﻿using System;
+﻿using JetBrains.Annotations;
 using LR.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,21 +8,18 @@ public class InputManager : SingletonMonoBehaviour<InputManager> {
 
     public class PlayerInputActions {
 
-        public InputAction Accelerate = Instance.PlayerInput.actions["Accelerate"];
-        public InputAction Decelerate = Instance.PlayerInput.actions["Decelerate"];
-        public InputAction TurnLeft = Instance.PlayerInput.actions["Turn Left"];
-        public InputAction TurnRight = Instance.PlayerInput.actions["Turn Right"];
-        public InputAction Pause = Instance.PlayerInput.actions["Pause"];
+        public InputAction Horizontal { get; } = Instance.PlayerInput.actions["Horizontal"];
+        public InputAction Vertical { get; } = Instance.PlayerInput.actions["Vertical"];
+        public InputAction Pause { get; } = Instance.PlayerInput.actions["Pause"];
 
     }
 
+    [UsedImplicitly]
     [field: SerializeField, ChildGameObjectsOnly]
     public PlayerInput PlayerInput { get; set; }
 
     public PlayerInputActions Actions { get; private set; }
 
-    private void Start() {
-        Actions = new PlayerInputActions();
-    }
+    private void Start() => Actions = new PlayerInputActions();
 
 }
