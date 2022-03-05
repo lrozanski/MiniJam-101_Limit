@@ -30,10 +30,10 @@ public abstract class VehicleController : MonoBehaviour {
     [ShowInInspector, ReadOnly]
     private Vector2 Velocity => rigidbody2D == null ? Vector2.zero : rigidbody2D.velocity;
 
-    private new Rigidbody2D rigidbody2D;
+    protected new Rigidbody2D rigidbody2D;
     private TrailRenderer[] skidmarks;
 
-    protected void Start() {
+    protected virtual void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
         skidmarks = GetComponentsInChildren<TrailRenderer>();
     }
