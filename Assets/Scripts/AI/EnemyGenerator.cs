@@ -18,10 +18,10 @@ namespace AI {
         [SerializeField, AssetsOnly, AssetSelector(Paths = "Assets/Prefabs")]
         private EnemyController enemyPrefab;
 
-        [SerializeField, PropertyRange(1, 1000)]
+        [SerializeField, PropertyRange(1, 10000)]
         private int maxGenerations;
 
-        [SerializeField, PropertyRange(1f, 100f)]
+        [SerializeField, PropertyRange(1f, 500f)]
         private float timeScale;
 
         private readonly List<EnemyController> enemies = new();
@@ -56,6 +56,8 @@ namespace AI {
                 }
                 enemies.Add(GenerateEnemy(enemyBase));
             }
+
+            Mutate(enemies[Random.Range(0, enemies.Count)]);
         }
 
         private EnemyController GenerateEnemy([CanBeNull] EnemyController previousGeneration = null) {
@@ -65,31 +67,21 @@ namespace AI {
             var enemy = Instantiate(enemyPrefab, transform, false);
             enemy.transform.position = startPositions[index++];
 
-            // accelerateAmount: 0.9919808, decelerateAmount: 0.7541581, turnAmount: 0.5326825
-            // accelerateAmount = 1f, decelerateAmount = 0.02117753f, turnAmount = 0.6687697f
-
             enemy.Ai = new EnemyController.AI {
-                // accelerateAmount = previousGeneration != null
-                    // ? Mathf.Clamp01(previousGeneration.Ai.accelerateAmount + Random.Range(-0.2f, 0.2f))
-                    // : Random.value,
-                // decelerateAmount = previousGeneration != null
-                    // ? Mathf.Clamp01(previousGeneration.Ai.decelerateAmount + Random.Range(-0.2f, 0.2f))
-                    // : Random.value,
-                // turnAmount = previousGeneration != null
-                    // ? Mathf.Clamp01(previousGeneration.Ai.turnAmount + Random.Range(-0.2f, 0.2f))
-                    // : Random.value
-                    accelerateAmount = 0.9913467f, decelerateAmount = 0.7942677f, turnAmount = 0.8672262f
+                accelerateAmount = previousGeneration != null
+                    ? Mathf.Clamp01(previousGeneration.Ai.accelerateAmount + Random.Range(-0.2f, 0.2f))
+                    : Random.value,
+                decelerateAmount = previousGeneration != null
+                    ? Mathf.Clamp01(previousGeneration.Ai.decelerateAmount + Random.Range(-0.2f, 0.2f))
+                    : Random.value,
+                turnAmount = previousGeneration != null
+                    ? Mathf.Clamp01(previousGeneration.Ai.turnAmount + Random.Range(-0.2f, 0.2f))
+                    : Random.value
             };
-
-            if (generation % 10 == 0) {
-                Mutate(enemy);
-            }
             return enemy;
         }
 
         private static void Mutate(EnemyController enemy) {
-            Debug.Log("Mutating enemy");
-
             switch (Random.Range(0, 3)) {
                 case 0:
                     enemy.Ai = new EnemyController.AI {
@@ -154,10 +146,10 @@ namespace AI {
         }
 
         private static int GetScore(EnemyController enemy) => Mathf.RoundToInt(
-            (enemy.ReachedFinishLine ? 1000 : 0)
+            (enemy.ReachedFinishLine ? 10000 : 0)
             + enemy.DistanceInTiles * 100
-            - enemy.Collisions * 500
-            - enemy.TimeElapsed * 10
+            - enemy.Collisions * 1000
+            - enemy.TimeElapsed * 25
         );
 
     }

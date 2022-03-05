@@ -86,10 +86,15 @@ namespace AI {
                 UpdateSteering(Ai.turnAmount);
             } else if (rightWallFar && !leftWallFar) {
                 UpdateSteering(-Ai.turnAmount);
-            } else if (leftWide) {
+            } else if (leftWide && !rightWide) {
                 UpdateSteering(Ai.turnAmount * 1.5f);
-            } else if (rightWide) {
+            } else if (rightWide && !leftWide) {
                 UpdateSteering(-Ai.turnAmount * 1.5f);
+            } else if (leftWide && rightWide) {
+                var direction = leftWide.distance < rightWide.distance ? 1 : -1;
+                var amount = Mathf.Lerp(0.5f, 2f, 1f - (leftWide.distance < rightWide.distance ? leftWide.fraction : rightWide.fraction));
+                
+                UpdateSteering(direction * Ai.turnAmount * amount);
             } else {
                 UpdateSteering(0f);
             }

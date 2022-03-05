@@ -3511,8 +3511,8 @@ MonoBehaviour:
   - {x: -1.5, y: -2.5}
   - {x: -1.5, y: -3.25}
   enemyPrefab: {fileID: 377193211734300489, guid: 957258a7c39db5c40be65c536befa209, type: 3}
-  maxGenerations: 1000
-  timeScale: 50
+  maxGenerations: 10000
+  timeScale: 100
 --- !u!1 &1368708994
 GameObject:
   m_ObjectHideFlags: 0
