@@ -3160,34 +3160,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Car
       objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_Mass
-      value: 0.40000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_AngularDrag
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_SleepingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7768356088468004113, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7768356088468004114, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3392,39 +3364,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerInput>k__BackingField: {fileID: 1725216045}
---- !u!1 &1874659657 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7768356088468004112, guid: 22643b9fa97032f4c80aa0ce0bf75346, type: 3}
-  m_PrefabInstance: {fileID: 1153842991}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1874659659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874659657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cd8e0e59f7494a9c5a7fccf43563e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 2.73
-  steeringPower: 0.4
-  surfaceFriction: 2
-  maxTyreFriction: 3
-  skidmarkThreshold: 0.242
---- !u!114 &1874659660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874659657}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a2e3afd61744cceaaacb3951f0699f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  acceleration: 3
-  steering: 3
