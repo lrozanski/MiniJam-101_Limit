@@ -718,6 +718,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2273193462494939728, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2273193462494939729, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_Color.b
       value: 0.1830188
@@ -737,6 +741,10 @@ PrefabInstance:
     - target: {fileID: 2273193462794098396, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273193462794098396, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_RootOrder

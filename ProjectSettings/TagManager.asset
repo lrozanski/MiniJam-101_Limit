@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Finish Line
   - Tile Direction
+  - Enemy
   layers:
   - Default
   - TransparentFX
