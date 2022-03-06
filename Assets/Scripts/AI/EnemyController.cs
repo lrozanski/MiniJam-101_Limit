@@ -147,12 +147,15 @@ namespace AI {
             if (front.distance < 1f) {
                 return;
             }
+
             switch (angleToTileDirection) {
                 case > 90f:
                     UpdateSteering(-Ai.turnAmount);
+                    Debug.DrawRay(transform.position, new Vector3(Mathf.Cos(angleToTileDirection), Mathf.Sin(angleToTileDirection)), Color.magenta);
                     break;
                 case < -90f:
                     UpdateSteering(Ai.turnAmount);
+                    Debug.DrawRay(transform.position, new Vector3(Mathf.Cos(angleToTileDirection), Mathf.Sin(angleToTileDirection)), Color.white);
                     break;
             }
         }
@@ -171,7 +174,7 @@ namespace AI {
 
         protected override void OnCollisionEnter2D(Collision2D col) {
             base.OnCollisionEnter2D(col);
-            
+
             Collisions++;
         }
 
