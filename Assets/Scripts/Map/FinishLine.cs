@@ -21,15 +21,6 @@ namespace Map {
         [SerializeField, BoxGroup("Enemy Properties")]
         private EnemyController.AI seed;
 
-        // [SerializeField, PropertyRange(0f, 0.2f), BoxGroup("Enemy Properties")]
-        // private float accelerationRandom;
-
-        // [SerializeField, PropertyRange(0f, 0.2f), BoxGroup("Enemy Properties")]
-        // private float decelerationRandom;
-
-        // [SerializeField, PropertyRange(0f, 0.2f), BoxGroup("Enemy Properties")]
-        // private float turnSpeedRandom;
-
         [SerializeField, PropertyRange(0f, 0.2f), BoxGroup("Enemy Properties")]
         private float skillRandom;
 

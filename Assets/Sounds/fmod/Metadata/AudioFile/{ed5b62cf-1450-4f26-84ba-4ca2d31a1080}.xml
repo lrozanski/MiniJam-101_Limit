@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ed5b62cf-1450-4f26-84ba-4ca2d31a1080}">
+		<property name="assetPath">
+			<value>Car_Crash_Wreck_Smash_Accident_Small_Head_On_02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.3073015873015876</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b8db4535-f318-4a50-a0b2-8d994113ec4f}</destination>
+		</relationship>
+	</object>
+</objects>

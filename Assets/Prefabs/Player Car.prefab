@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.23018867
       objectReference: {fileID: 0}
+    - target: {fileID: 2273193462494939729, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098396, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_Name
       value: Player Car
