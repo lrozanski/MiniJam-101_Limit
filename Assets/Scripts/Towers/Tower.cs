@@ -1,8 +1,5 @@
-﻿using System;
-using Sirenix.OdinInspector;
-using Unity.Mathematics;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Towers {
     public class Tower : MonoBehaviour {
@@ -15,12 +12,19 @@ namespace Towers {
 
         [SerializeField, PropertyRange(0f, 50f)]
         private float projectileSpeed;
+        
+        [SerializeField, PropertyRange(0f, 100)]
+        private int projectileDamage;
 
         [SerializeField, PropertyRange(0f, 2f)]
         private float cooldown;
 
         private CircleCollider2D circleCollider2D;
         private float currentCooldown;
+
+        public float ProjectileSpeed => projectileSpeed;
+        public float ProjectileDamage => projectileDamage;
+        public float Cooldown => cooldown;
 
         private void Start() {
             circleCollider2D = GetComponentInChildren<CircleCollider2D>();
@@ -46,9 +50,10 @@ namespace Towers {
         }
 
         private void SpawnProjectile(Vector3 target) {
-            var projectile = Instantiate(projectilePrefab, transform.position, quaternion.identity);
+            var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             projectile.Direction = (target - transform.position).normalized;
             projectile.Speed = projectileSpeed;
+            projectile.Damage = projectileDamage;
         }
 
     }

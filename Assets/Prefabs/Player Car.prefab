@@ -7,6 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 132513558962364642, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: StopEvent
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 523705560572183716, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: StopEvent
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 987758941597456815, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173160896847935772, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273193462494939728, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273193462494939728, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2273193462494939729, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -27,17 +51,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Car
       objectReference: {fileID: 0}
+    - target: {fileID: 2273193462794098396, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273193462794098396, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -7.500001
       objectReference: {fileID: 0}
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70,6 +102,14 @@ PrefabInstance:
     - target: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663262413660823955, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: StopEvent
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100056344641029011, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
+      propertyPath: StopEvent
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}
@@ -112,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cd8e0e59f7494a9c5a7fccf43563e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 2.73
-  steeringPower: 0.45
+  power: 4
+  steeringPower: 0.37
   surfaceFriction: 3
   maxTyreFriction: 2
   skidmarkThreshold: 0.45

@@ -1,9 +1,7 @@
-﻿using System;
-using AI;
+﻿using AI;
 using LR.Core.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Map {
     public class FinishLine : MonoBehaviour {
@@ -60,8 +58,11 @@ namespace Map {
         }
 
         private void OnTriggerEnter2D(Collider2D col) {
+            if (Time.timeSinceLevelLoad < 5f) {
+                return;
+            }
             if (col.CompareTag("Enemy")) {
-                
+                GameManager.Instance.RemoveLife();
             }
         }
 

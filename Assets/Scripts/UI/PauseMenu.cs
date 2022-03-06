@@ -21,12 +21,14 @@ namespace UI {
 
         private void Pause(InputAction.CallbackContext _) {
             pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-            Time.timeScale = Time.timeScale > 0f ? 0f : 1f;
 
+            if (!GameManager.Instance.IsGameOver) {
+                Time.timeScale = Time.timeScale > 0f ? 0f : 1f;
+            }
             if (!initialized && pauseMenu.gameObject.activeSelf) {
                 pauseMenu.rootVisualElement.Q<Button>("Restart").clicked += () => {
                     Time.timeScale = 1f;
-                    SceneManager.LoadScene("Main");
+                    SceneManager.LoadScene("Main", LoadSceneMode.Single);
                 };
                 pauseMenu.rootVisualElement.Q<Button>("Exit").clicked += Application.Quit;
 

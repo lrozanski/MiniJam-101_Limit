@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8584821967312614968}
   - component: {fileID: 3124116079590501264}
+  - component: {fileID: 6709837549229457560}
   m_Layer: 13
   m_Name: Player Detector
   m_TagString: Untagged
@@ -42,12 +43,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &6709837549229457560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5436954365547876981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc84d1ae134d478e959994566aaf9a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 3176556259616752250}
 --- !u!1 &7147077741329988333
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7147077741909242674}
   - component: {fileID: 445827133}
+  - component: {fileID: 3176556259616752250}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -209,3 +224,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!114 &3176556259616752250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7147077741909242677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148ff052e750486ca645296123a6bd14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8967141105551862664, guid: 9e46a1ac9eac98844bdef58393d9a9c1, type: 3}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  projectileSpeed: 15
+  projectileDamage: 3
+  cooldown: 0.5
