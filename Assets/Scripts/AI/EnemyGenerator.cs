@@ -21,7 +21,7 @@ namespace AI {
         [SerializeField, PropertyRange(1, 10000)]
         private int maxGenerations;
 
-        [SerializeField, PropertyRange(1f, 500f)]
+        [SerializeField, PropertyRange(1f, 100f)]
         private float timeScale;
 
         private readonly List<EnemyController> enemies = new();
@@ -70,13 +70,13 @@ namespace AI {
             enemy.Ai = new EnemyController.AI {
                 accelerateAmount = previousGeneration != null
                     ? Mathf.Clamp01(previousGeneration.Ai.accelerateAmount + Random.Range(-0.2f, 0.2f))
-                    : Random.value,
+                    : Random.Range(0.95f, 1f),
                 decelerateAmount = previousGeneration != null
                     ? Mathf.Clamp01(previousGeneration.Ai.decelerateAmount + Random.Range(-0.2f, 0.2f))
-                    : Random.value,
+                    : Random.Range(0.5f, 1f),
                 turnAmount = previousGeneration != null
                     ? Mathf.Clamp01(previousGeneration.Ai.turnAmount + Random.Range(-0.2f, 0.2f))
-                    : Random.value
+                    : Random.Range(0.5f, 1f)
             };
             return enemy;
         }
@@ -85,7 +85,7 @@ namespace AI {
             switch (Random.Range(0, 3)) {
                 case 0:
                     enemy.Ai = new EnemyController.AI {
-                        accelerateAmount = Random.value,
+                        accelerateAmount = Random.Range(0.75f, 1f),
                         decelerateAmount = enemy.Ai.decelerateAmount,
                         turnAmount = enemy.Ai.turnAmount
                     };
@@ -93,7 +93,7 @@ namespace AI {
                 case 1:
                     enemy.Ai = new EnemyController.AI {
                         accelerateAmount = enemy.Ai.accelerateAmount,
-                        decelerateAmount = Random.value,
+                        decelerateAmount = Random.Range(0.5f, 1f),
                         turnAmount = enemy.Ai.turnAmount
                     };
                     return;
@@ -101,7 +101,7 @@ namespace AI {
                     enemy.Ai = new EnemyController.AI {
                         accelerateAmount = enemy.Ai.accelerateAmount,
                         decelerateAmount = enemy.Ai.decelerateAmount,
-                        turnAmount = Random.value
+                        turnAmount = Random.Range(0.5f, 1f)
                     };
                     return;
             }
