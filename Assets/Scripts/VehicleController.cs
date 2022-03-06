@@ -1,3 +1,4 @@
+using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,8 +31,22 @@ public abstract class VehicleController : MonoBehaviour {
     [ShowInInspector, ReadOnly]
     private Vector2 Velocity => rigidbody2D == null ? Vector2.zero : rigidbody2D.velocity;
 
+    [SerializeField, ChildGameObjectsOnly]
+    private StudioEventEmitter accelerateEvent;
+
+    [SerializeField, ChildGameObjectsOnly]
+    private StudioEventEmitter stopEvent;
+
+    [SerializeField, ChildGameObjectsOnly]
+    private StudioEventEmitter skidmarkEvent;
+
+    [SerializeField, ChildGameObjectsOnly]
+    private StudioEventEmitter crashEvent;
+
     protected new Rigidbody2D rigidbody2D;
     private TrailRenderer[] skidmarks;
+
+    private bool playStopEvent;
 
     protected virtual void Start() {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -53,17 +68,40 @@ public abstract class VehicleController : MonoBehaviour {
         var acceleration = (Vector2) transform.up * (throttle * power);
         rigidbody2D.AddForce(acceleration);
 
+        if (throttle > 0 && !accelerateEvent.IsPlaying()) {
+            if (stopEvent.IsPlaying()) {
+                stopEvent.Stop();
+            }
+            accelerateEvent.Play();
+            playStopEvent = true;
+        } else if (throttle <= 0 && accelerateEvent.IsPlaying()) {
+            accelerateEvent.Stop();
+
+            if (playStopEvent && !stopEvent.IsPlaying()) {
+                stopEvent.Play();
+                playStopEvent = false;
+            }
+        }
+
         var driftForce = new Vector2(transform.InverseTransformVector(rigidbody2D.velocity).x, 0f);
         var frictionForce = Vector2.ClampMagnitude(driftForce * -1 * surfaceFriction, maxTyreFriction);
 
         rigidbody2D.AddForce(rigidbody2D.GetRelativeVector(frictionForce), ForceMode2D.Force);
 
-        // Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(driftForce), Color.green);
-        // Debug.DrawLine(rigidbody2D.position, rigidbody2D.GetRelativePoint(frictionForce), Color.red);
+        var showSkidmarks = driftForce.sqrMagnitude > frictionForce.sqrMagnitude * skidmarkThreshold;
 
         foreach (var trailRenderer in skidmarks) {
-            trailRenderer.emitting = driftForce.sqrMagnitude > frictionForce.sqrMagnitude * skidmarkThreshold;
+            trailRenderer.emitting = showSkidmarks;
         }
+        if (showSkidmarks && !skidmarkEvent.IsPlaying()) {
+            skidmarkEvent.Play();
+        } else if (!showSkidmarks && skidmarkEvent.IsPlaying()) {
+            skidmarkEvent.Stop();
+        }
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D col) {
+        crashEvent.Play();
     }
 
 }

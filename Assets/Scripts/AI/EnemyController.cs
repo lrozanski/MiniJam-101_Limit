@@ -48,6 +48,8 @@ namespace AI {
         [SerializeField]
         private LayerMask trackLayerMask;
 
+        public float StartDelay { get; set; }
+
         private HashSet<Vector2Int> VisitedTiles { get; } = new();
 
         [ShowInInspector]
@@ -76,9 +78,16 @@ namespace AI {
                 return;
             }
             TimeElapsed += Time.deltaTime;
+
+            if (StartDelay > 0f) {
+                StartDelay = Mathf.Max(StartDelay - Time.deltaTime, 0f);
+            }
         }
 
         protected override void FixedUpdate() {
+            if (StartDelay > 0f) {
+                return;
+            }
             angleToTileDirection = Vector2.SignedAngle(transform.up, tileDirection);
 
             var position = rigidbody2D.position;
@@ -160,7 +169,9 @@ namespace AI {
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D col) {
+        protected override void OnCollisionEnter2D(Collision2D col) {
+            base.OnCollisionEnter2D(col);
+            
             Collisions++;
         }
 

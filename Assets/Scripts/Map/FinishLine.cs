@@ -12,9 +12,6 @@ namespace Map {
         [SerializeField, ChildGameObjectsOnly]
         private BoxCollider2D boxCollider2D;
 
-        [SerializeField, AssetsOnly, AssetSelector(Paths = "Assets/Prefabs")]
-        private PlayerController playerPrefab;
-
         [SerializeField, AssetsOnly, AssetSelector(Paths = "Assets/Prefabs"), BoxGroup("Enemy Properties")]
         private EnemyController enemyPrefab;
 
@@ -49,6 +46,8 @@ namespace Map {
                 seed.accelerateAmount += seedRandom;
                 seed.decelerateAmount += seedRandom;
                 seed.turnAmount += seedRandom;
+
+                enemy.StartDelay = Random.value * 0.5f;
             }
         }
 
