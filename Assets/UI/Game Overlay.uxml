@@ -3,11 +3,15 @@
     <ui:VisualElement name="GameOverPanel" style="position: absolute; top: 45%; width: 50%; height: 10%; left: 25%; background-color: rgba(0, 0, 0, 0.9); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; -unity-text-align: upper-center; align-items: center; justify-content: center;">
         <ui:Label text="Game Over" display-tooltip-when-elided="true" style="color: rgb(255, 0, 0); -unity-font-style: bold; font-size: 26px; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;);" />
     </ui:VisualElement>
+    <ui:VisualElement name="VictoryPanel" style="position: absolute; top: 45%; width: 50%; height: 10%; left: 25%; background-color: rgba(0, 0, 0, 0.9); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; -unity-text-align: upper-center; align-items: center; justify-content: center;">
+        <ui:Label text="Victory!" display-tooltip-when-elided="true" style="color: rgb(0, 255, 9); -unity-font-style: bold; font-size: 26px; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;);" />
+    </ui:VisualElement>
     <ui:VisualElement name="Root" class="root" style="justify-content: space-between; align-items: center;">
         <ui:VisualElement name="TopBar" class="top-bar">
             <ui:Label text="Lives: 100 / 100" display-tooltip-when-elided="true" name="Lives" class="lives-label" />
             <ui:Label text="Money: $100" display-tooltip-when-elided="true" name="Money" class="money-label" />
-            <ui:Label text="Press &lt;color=#0F0&gt;P&lt;/color&gt; or &lt;color=#0F0&gt;ESC&lt;/color&gt; to pause" display-tooltip-when-elided="true" name="Money" style="overflow: visible; visibility: visible; display: flex; flex-grow: 1; -unity-text-align: upper-right; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; font-size: 16px; -unity-font-style: bold; -unity-font: url(&apos;project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&amp;guid=e3265ab4bf004d28a9537516768c1c75&amp;type=3#LiberationSans&apos;); color: rgb(144, 144, 144);" />
+            <ui:Label text="Enemies Left: 100" display-tooltip-when-elided="true" name="EnemiesLeft" class="enemies-left-label" />
+            <ui:Label text="Press &lt;color=#0F0&gt;P&lt;/color&gt; or &lt;color=#0F0&gt;ESC&lt;/color&gt; to pause" display-tooltip-when-elided="true" name="Info" class="top-bar-info-label" />
         </ui:VisualElement>
         <ui:VisualElement name="BottomBar" class="bottom-bar" style="width: 75%; align-items: flex-start;">
             <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center; flex-grow: 0; flex-shrink: 1; flex-basis: initial; width: 100%;">

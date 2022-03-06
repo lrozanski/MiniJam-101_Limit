@@ -31,6 +31,15 @@
                     "processors": "Normalize(min=-1,max=1),AxisDeadzone",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Upgrade Tower",
+                    "type": "Button",
+                    "id": "86a740ea-f246-4eac-a838-31789020a0b9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -121,6 +130,17 @@
                     "action": "Vertical",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "992ea8a2-fc2b-4066-9221-bc79312a8a37",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Upgrade Tower",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

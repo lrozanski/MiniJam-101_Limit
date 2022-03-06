@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 445827133}
   - component: {fileID: 3176556259616752250}
   m_Layer: 8
-  m_Name: Tower
+  m_Name: Gun Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 3.5
 --- !u!114 &3176556259616752250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,5 +241,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   projectileSpeed: 15
-  projectileDamage: 3
+  projectileDamage: 2
   cooldown: 0.5
+  initialUpgradeCost: 50

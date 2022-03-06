@@ -1,10 +1,11 @@
 ﻿using AI;
+using LR.Core;
 using LR.Core.Utils;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Map {
-    public class FinishLine : MonoBehaviour {
+    public class FinishLine : SingletonMonoBehaviour<FinishLine> {
 
         private const int Rows = 3;
 
@@ -27,11 +28,11 @@ namespace Map {
         private int enemyCars;
 
         private Rect spawnArea;
-        
+
         private void Start() {
             var bounds = boxCollider2D.bounds;
             spawnArea = new Rect(bounds.min.x, bounds.min.y, bounds.size.x, bounds.size.y);
-            
+
             SpawnEnemies();
         }
 
@@ -55,13 +56,11 @@ namespace Map {
             seed.turnAmount += seedRandom;
 
             enemy.StartDelay = Random.value * 0.5f;
+            enemy.GetComponent<Enemy>().Index = index;
         }
 
         private void OnTriggerEnter2D(Collider2D col) {
-            if (Time.timeSinceLevelLoad < 5f) {
-                return;
-            }
-            if (col.CompareTag("Enemy")) {
+            if (col.CompareTag("Enemy") && col.GetComponentInParent<Enemy>().TimeSinceSpawn > 5f) {
                 GameManager.Instance.RemoveLife();
             }
         }

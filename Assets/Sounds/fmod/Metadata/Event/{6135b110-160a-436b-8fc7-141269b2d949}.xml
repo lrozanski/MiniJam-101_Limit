@@ -90,7 +90,7 @@
 	<object class="MixerBusPanner" id="{4997af7c-7e9e-42a0-842f-307706f8e86e}" />
 	<object class="SingleSound" id="{dd300a57-77d6-4551-a73d-beb888a582f9}">
 		<property name="length">
-			<value>0.95000000000000007</value>
+			<value>0.59999999999999998</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>1.573573735199139</value>
@@ -104,7 +104,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{858bbbf5-037d-4b0b-9b09-47107c3352e6}">
 		<property name="volume">
-			<value>-6</value>
+			<value>-12</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -122,6 +122,8 @@
 	<object class="MixerBusEffectChain" id="{401f055f-30c8-4f21-8e5d-db2a2bc3bbd0}">
 		<relationship name="effects">
 			<destination>{3746caf9-ee53-4251-95e8-600a37262c50}</destination>
+			<destination>{6dad6a38-7a5b-46f9-80e2-007c0c05c143}</destination>
+			<destination>{b77ca516-e3df-4834-a6f8-d9f78c1ce6be}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7961a17e-1e2d-4a58-b1ed-b5dec58eb692}" />
@@ -141,9 +143,15 @@
 	</object>
 	<object class="MixerBusPanner" id="{eae7c0df-f21d-4d30-94a3-e6577dee8ff7}" />
 	<object class="MixerBusFader" id="{3746caf9-ee53-4251-95e8-600a37262c50}" />
+	<object class="PitchShifterEffect" id="{6dad6a38-7a5b-46f9-80e2-007c0c05c143}" />
+	<object class="PitchShifterEffect" id="{b77ca516-e3df-4834-a6f8-d9f78c1ce6be}">
+		<property name="pitch">
+			<value>0.610000014</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{41cdefc4-4b4c-4b9e-95da-240c17cc06f3}">
 		<property name="position">
-			<value>0.27230893433799785</value>
+			<value>0.069999999999999951</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -154,7 +162,7 @@
 	</object>
 	<object class="AutomationPoint" id="{d6d6f29b-4604-4c50-94e4-a51824f4408a}">
 		<property name="position">
-			<value>0.95000000000000007</value>
+			<value>0.59999999999999998</value>
 		</property>
 		<property name="value">
 			<value>0</value>

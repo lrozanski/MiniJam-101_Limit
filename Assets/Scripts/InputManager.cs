@@ -12,6 +12,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager> {
         public InputAction Horizontal { get; } = Instance.PlayerInput.actions["Horizontal"];
         public InputAction Vertical { get; } = Instance.PlayerInput.actions["Vertical"];
         public InputAction Pause { get; } = Instance.PlayerInput.actions["Pause"];
+        public InputAction UpgradeTower { get; } = Instance.PlayerInput.actions["Upgrade Tower"];
 
     }
 

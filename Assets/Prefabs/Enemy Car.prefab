@@ -857,7 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e4dd9950c4462bb879d5401770c790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <HP>k__BackingField: 2
+  <HP>k__BackingField: 5
+  <MoneyForKill>k__BackingField: 5
 --- !u!4 &2345760006204063759 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2273193462794098398, guid: 077bf244dde0d2649bdb77d0ac39a139, type: 3}

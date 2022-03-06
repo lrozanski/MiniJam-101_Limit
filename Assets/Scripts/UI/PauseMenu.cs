@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -19,12 +20,7 @@ namespace UI {
             InputManager.Instance.Actions.Pause.performed -= Pause;
         }
 
-        private void Pause(InputAction.CallbackContext _) {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-
-            if (!GameManager.Instance.IsGameOver) {
-                Time.timeScale = Time.timeScale > 0f ? 0f : 1f;
-            }
+        private void Update() {
             if (!initialized && pauseMenu.gameObject.activeSelf) {
                 pauseMenu.rootVisualElement.Q<Button>("Restart").clicked += () => {
                     Time.timeScale = 1f;
@@ -33,6 +29,16 @@ namespace UI {
                 pauseMenu.rootVisualElement.Q<Button>("Exit").clicked += Application.Quit;
 
                 initialized = true;
+            }
+        }
+
+        private void Pause(InputAction.CallbackContext _) {
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+
+            if (!GameManager.Instance.IsGameOver) {
+                Time.timeScale = Time.timeScale > 0f ? 0f : 1f;
+            } else {
+                pauseMenu.gameObject.SetActive(true);
             }
         }
 
