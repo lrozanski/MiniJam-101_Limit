@@ -14,13 +14,13 @@ TagManager:
   - Water
   - UI
   - Track
-  - Cars
+  - Enemy Cars
   - Towers
   - Projectiles
   - Finish Line
   - Tile Directions
-  - 
-  - 
+  - Player
+  - Player Detector
   - 
   - 
   - 

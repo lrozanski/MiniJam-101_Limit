@@ -1,0 +1,79 @@
+.root {
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.top-bar {
+    flex-grow: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.money-label {
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    -unity-font-style: bold;
+    color: rgba(255, 232, 88, 255);
+    font-size: 16px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.can-afford {
+    -unity-text-align: upper-center;
+    color: rgb(255, 232, 88);
+}
+
+.cannot-afford {
+    -unity-text-align: upper-center;
+    color: rgb(255, 0, 0);
+}
+
+.tower-description {
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    color: rgba(114, 193, 255, 255);
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-left;
+    white-space: normal;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.upgrade-label {
+    -unity-text-align: upper-center;
+    color: rgb(255, 255, 255);
+}
+
+.upgrade-label {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Fonts/LiberationSans.ttf?fileID=12800000&guid=e3265ab4bf004d28a9537516768c1c75&type=3#LiberationSans');
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 255);
+}

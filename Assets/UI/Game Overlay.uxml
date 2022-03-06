@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Game%20Overlay.uss?fileID=7433441132597879392&amp;guid=13d064ea9946352468b9b51d695afcf5&amp;type=3#Game Overlay" />
+    <ui:VisualElement name="Root" class="root" style="justify-content: space-between; align-items: center;">
+        <ui:VisualElement class="top-bar">
+            <ui:Label text="Money: $100" display-tooltip-when-elided="true" name="MoneyText" class="money-label" />
+        </ui:VisualElement>
+        <ui:VisualElement class="top-bar" style="width: 75%;">
+            <ui:VisualElement style="flex-direction: row; align-items: center; justify-content: center;">
+                <ui:Label text="Press &lt;color=#0f0&gt;U&lt;/color&gt; to upgrade" display-tooltip-when-elided="true" enable-rich-text="true" class="upgrade-label" />
+                <ui:Label text="-" display-tooltip-when-elided="true" enable-rich-text="true" class="upgrade-label" style="-unity-text-align: upper-center; color: rgb(255, 255, 255);" />
+                <ui:Label text="150" display-tooltip-when-elided="true" enable-rich-text="true" class="money-label can-afford" />
+            </ui:VisualElement>
+            <ui:Label text="Tower details" display-tooltip-when-elided="true" name="TowerDetails" class="tower-description" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
