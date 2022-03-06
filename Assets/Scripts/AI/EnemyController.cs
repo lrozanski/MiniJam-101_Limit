@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Map;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -61,6 +62,15 @@ namespace AI {
         [ShowInInspector]
         public int Collisions { get; private set; }
 
+        private RaycastHit2D leftWallFar;
+        private RaycastHit2D rightWallFar;
+        private RaycastHit2D leftWide;
+        private RaycastHit2D rightWide;
+        private RaycastHit2D front;
+
+        private Vector2 tileDirection;
+        private float angleToTileDirection;
+
         private void Update() {
             if (ReachedFinishLine) {
                 return;
@@ -69,6 +79,8 @@ namespace AI {
         }
 
         protected override void FixedUpdate() {
+            angleToTileDirection = Vector2.SignedAngle(transform.up, tileDirection);
+
             var position = rigidbody2D.position;
             var currentTile = TilemapManager.Instance.WorldToCell(position);
 
@@ -76,12 +88,20 @@ namespace AI {
                 VisitedTiles.Add(currentTile);
             }
 
-            var leftWallFar = Physics2D.Linecast(position, leftWallFarDetector.position, trackLayerMask);
-            var rightWallFar = Physics2D.Linecast(position, rightWallFarDetector.position, trackLayerMask);
-            var leftWide = Physics2D.Linecast(position, leftWideDetector.position, trackLayerMask);
-            var rightWide = Physics2D.Linecast(position, rightWideDetector.position, trackLayerMask);
-            var front = Physics2D.Linecast(position, frontDetector.position, trackLayerMask);
+            leftWallFar = Physics2D.Linecast(position, leftWallFarDetector.position, trackLayerMask);
+            rightWallFar = Physics2D.Linecast(position, rightWallFarDetector.position, trackLayerMask);
+            leftWide = Physics2D.Linecast(position, leftWideDetector.position, trackLayerMask);
+            rightWide = Physics2D.Linecast(position, rightWideDetector.position, trackLayerMask);
+            front = Physics2D.Linecast(position, frontDetector.position, trackLayerMask);
 
+            CalculateSteering();
+            CalculateThrottle();
+            CorrectCourse();
+
+            base.FixedUpdate();
+        }
+
+        private void CalculateSteering() {
             if (leftWallFar && !rightWallFar) {
                 UpdateSteering(Ai.turnAmount);
             } else if (rightWallFar && !leftWallFar) {
@@ -93,16 +113,45 @@ namespace AI {
             } else {
                 UpdateSteering(0f);
             }
-            if (front) {
+        }
+
+        private void CalculateThrottle() {
+            if (front && front.distance < 1f) {
+                switch (angleToTileDirection) {
+                    case > 0f:
+                        UpdateSteering(-Ai.turnAmount);
+                        break;
+                    case < 0f:
+                        UpdateSteering(Ai.turnAmount);
+                        break;
+                }
+
+                UpdateThrottle(-Ai.decelerateAmount);
+            } else if (front) {
                 UpdateThrottle(Ai.accelerateAmount - Ai.decelerateAmount * Mathf.Lerp(0f, 1f, 1f - front.fraction));
             } else {
                 UpdateThrottle(Ai.accelerateAmount);
             }
+        }
 
-            base.FixedUpdate();
+        private void CorrectCourse() {
+            if (front.distance < 1f) {
+                return;
+            }
+            switch (angleToTileDirection) {
+                case > 90f:
+                    UpdateSteering(-Ai.turnAmount);
+                    break;
+                case < -90f:
+                    UpdateSteering(Ai.turnAmount);
+                    break;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D col) {
+            if (col.CompareTag("Tile Direction")) {
+                tileDirection = col.GetComponent<TileDirection>().Direction;
+            }
             if (TimeElapsed <= 5f || DistanceInTiles < 5) {
                 return;
             }

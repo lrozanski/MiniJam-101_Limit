@@ -149,7 +149,7 @@ namespace AI {
             (enemy.ReachedFinishLine ? 10000 : 0)
             + enemy.DistanceInTiles * 100
             - enemy.Collisions * 1000
-            - enemy.TimeElapsed * 25
+            - enemy.TimeElapsed * 100
         );
 
     }
